@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int f[128] = {0};
+
+        for(char c : magazine)
+            f[c]++;
+
+        for(char c : ransomNote) {
+            if(f[c] == 0)
+                return false;
+
+            f[c]--;
+        }
+
+        return true;
+    }
+};
