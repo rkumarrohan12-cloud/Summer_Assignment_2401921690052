@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+      
+        ListNode* curr = head;
+        ListNode* prev = NULL;
+
+        while(curr != NULL) {
+            ListNode* newNode = new ListNode(curr->val); 
+            newNode->next = prev;
+            prev = newNode;
+            curr = curr->next;
+        }
+
+        ListNode* p1 = head;
+        ListNode* p2 = prev;
+
+        while(p1 != NULL && p2 != NULL) {
+            if(p1->val != p2->val)
+                return false;
+
+            p1 = p1->next;
+            p2 = p2->next;
+        }
+
+        return true;
+    }
+};
